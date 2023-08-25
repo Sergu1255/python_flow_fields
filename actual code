@@ -1,0 +1,34 @@
+w, h = 1000,1000 
+a = 0
+s = 0
+#color values:
+r=random(0,175)
+g=random(0,175)
+b=random(0,175)
+cell_count = 333 
+vector1 = PVector(200,200)
+vector2 = PVector(300,200)
+cell_size = w/cell_count # This difens how big the lines are
+noise_scale = 0.05 #This causes chaos in the image so I suggest you stay in the 0.1 - 0.009
+
+def setup():
+	size(w,h)
+	background(0)
+	strokeWeight(0.1) # This is how THICK the lines are
+	stroke(r, g, b)
+	pixelDensity(2)
+    
+
+	for x in range(cell_count):
+    		for y in range(cell_count):
+        			n = noise(x * noise_scale, y * noise_scale)
+ 	 
+        			rot = n*(2*PI) #this is the rotation
+       	 
+        			pushMatrix() #moves the image to the new origin
+        			translate(x*cell_size, y*cell_size) 
+       	 
+        			rotate(rot)
+       	 
+        			line(a,s, cell_size,15)
+        			popMatrix() #places the image's new origin
